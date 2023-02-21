@@ -157,7 +157,7 @@ global {
 		add localIncome to: localIncomeList;
 		add govIncome to: govIncomeList;
 		write length(RList);
-		save [RList, WList, localIncomeList, govIncomeList] to: "C:/Users/user/Documents/Maasai-Mara/ODEData/policy3.csv" type: csv;
+		// save [RList, WList, localIncomeList, govIncomeList] to: "C:/Users/user/Documents/Maasai-Mara/ODEData/output.csv" type: csv;
 	}
 	
 	init {
@@ -224,7 +224,7 @@ species resource {
 	}
 	
 	aspect default {
-		draw circle(CIRCLE_SIZE) color: #yellow;
+		draw circle(CIRCLE_SIZE) color: #green;
 	}
 }
 
@@ -419,7 +419,7 @@ species wildLifeAnimal parent: animal {
 	}
 	
 	reflex hunted {
-		if (length(at_distance(hunter, 25)) > 0 and flip(0.1) = true) {
+		if (length(at_distance(hunter, 20)) > 0 and flip(0.1) = true) {
 			do die;
 		}
 	}
@@ -455,7 +455,7 @@ experiment test type: gui {
 		display RInformation {
 			chart "Resource of the environment (R) and Diversity of the environment (W)" type: series size: {1, 0.5} position: {0, 0} {
 				data "R" value: R color: #blue;
-				data "W" value: W color: #red;
+				data "W" value: (W / 20) color: #red;
 			}
 			
 		}
